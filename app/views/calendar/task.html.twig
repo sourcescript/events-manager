@@ -1,0 +1,24 @@
+<div class='panel panel-primary'>
+	<div class='panel-heading'>
+		<div class='panel-title'>
+			{{ reminder.title }}
+		</div>
+	</div>
+	<div class='panel-body'>
+		<div class='alert' id='notifAlert' style='display:none;'>
+
+		</div>
+		<p class='lead'>
+			<span class='label label-{{ reminder.getStatus(0) }}'>
+				{{ reminder.getStatus(1) }}
+			</span>
+			{% if not reminder.is_done %}
+			<button class='btn btn-success btn-sm pull-right' id='completeBtn' data-reminder-id='{{ reminder.id }}' style='margin-left: 20px;'><span class='glyphicon glyphicon-ok'></span>&nbsp;Mark As Complete</button>
+			{% endif %}
+		</p>
+		<p class='lead'>{{ reminder.desc }}</p>
+		Author: <span class='label label-info'>{{ reminder.getUser().user_nicename }}</span>
+		<br />
+		Deadline: <span class='label label-danger'>{{ reminder.toDate }}</span>
+	</div>	
+</div> 	
